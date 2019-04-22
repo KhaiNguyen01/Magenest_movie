@@ -1,0 +1,44 @@
+<?php
+$customer = $block->getCustomerCollection();
+$product = $block->getProductCollection();
+$order = $block->getOrderCollection();
+$invoice = $block->getInvoiceCollection();
+$creditmemo = $block->getCreditmemoCollection();
+?>
+<h2>Request made today</h2>
+<hr>
+
+<div class="col-m-4">
+    <h3>Total request today</h3>
+    Numbers of Module: <?php echo $block->modulesList(); ?>
+    <br>
+    Numbers of other Module: <?php echo $block->modulesList() - $block->otherModules(); ?>
+</div>
+
+<div class="col-m-4">
+    <h3>Details</h3>
+    <table class="admin__table-secondary"
+    ">
+    <tr>
+        <th><?php echo __('Customer') ?></th>
+        <td><?php echo count($customer); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Product') ?></th>
+        <td><?php echo count($product); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Order') ?></th>
+        <td><?php echo count($order); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Invoice') ?></th>
+        <td><?php echo count($invoice); ?></td>
+    </tr>
+    <tr>
+        <th><?php echo __('Creditmemo') ?></th>
+        <td><?php echo count($creditmemo); ?></td>
+    </tr>
+    </table>
+
+</div>

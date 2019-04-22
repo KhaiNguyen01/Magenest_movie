@@ -1,6 +1,6 @@
 <?php
 
-namespace Magenest\Movie\Controller\Adminhtml\AddMovie;
+namespace Magenest\Movie\Controller\Adminhtml\RequestDailyReport;
 
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;

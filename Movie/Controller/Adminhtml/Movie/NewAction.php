@@ -5,7 +5,7 @@ namespace Magenest\Movie\Controller\Adminhtml\Movie;
 use Magento\Backend\App\Action\Context;
 use Magento\Framework\View\Result\PageFactory;
 
-class Index extends \Magento\Backend\App\Action
+class NewAction extends \Magento\Backend\App\Action
 {
     protected $resultPageFactory;
 

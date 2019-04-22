@@ -13,7 +13,7 @@
                 id="Magenest_Movie::helloworld"
                 title="HelloWorld"
                 module="Magenest_Movie"
-                sortOrder="50"
+                sortOrder="30"
                 parent="Magenest_Movie::movie"
                 resource="Magenest_Movie::movie"
         />
@@ -21,7 +21,7 @@
                 id="Magenest_Movie::movie_index"
                 title="Movie Index"
                 module="Magenest_Movie"
-                sortOrder="55"
+                sortOrder="35"
                 parent="Magenest_Movie::helloworld"
                 action="movie/movie"
                 resource="Magenest_Movie::movie"
@@ -31,7 +31,7 @@
                 id="Magenest_Movie::actor_index"
                 title="Actor Index"
                 module="Magenest_Movie"
-                sortOrder="60"
+                sortOrder="40"
                 parent="Magenest_Movie::helloworld"
                 action="movie/actor"
                 resource="Magenest_Movie::movie"
@@ -40,7 +40,7 @@
                 id="Magenest_Movie::director_index"
                 title="Director Index"
                 module="Magenest_Movie"
-                sortOrder="65"
+                sortOrder="45"
                 parent="Magenest_Movie::helloworld"
                 action="movie/index/director"
                 resource="Magenest_Movie::movie"
@@ -49,9 +49,100 @@
                 id="Magenest_Movie::helloworld_2"
                 title="HelloWorld2"
                 module="Magenest_Movie"
-                sortOrder="70"
+                sortOrder="50"
                 parent="Magenest_Movie::movie"
                 resource="Magenest_Movie::movie"
+        />
+        <add
+                id="Magenest_Movie::integration"
+                title="Integration"
+                module="Magenest_Movie"
+                sortOrder="70"
+                resource="Magenest_Movie::all"
+        />
+        <add
+                id="Magenest_Movie::xero_integration"
+                title="Xero Integration"
+                module="Magenest_Movie"
+                sortOrder="30"
+                parent="Magenest_Movie::integration"
+                resource="Magenest_Movie::all"
+        />
+        <add
+                id="Magenest_Movie::view_logs"
+                title="View Logs"
+                module="Magenest_Movie"
+                sortOrder="35"
+                parent="Magenest_Movie::xero_integration"
+                action="movie/view_logs"
+                resource="Magenest_Movie::all"
+
+        />
+        <add
+                id="Magenest_Movie::queue_list"
+                title="Queue List"
+                module="Magenest_Movie"
+                sortOrder="40"
+                parent="Magenest_Movie::xero_integration"
+                action="movie/queue_list"
+                resource="Magenest_Movie::all"
+
+        />
+        <add
+                id="Magenest_Movie::request_daily_report"
+                title="Request Daily Report"
+                module="Magenest_Movie"
+                sortOrder="45"
+                parent="Magenest_Movie::xero_integration"
+                action="movie/requestdailyreport"
+                resource="Magenest_Movie::all"
+
+        />
+        <add
+                id="Magenest_Movie::configuration"
+                title="Configuration"
+                module="Magenest_Movie"
+                sortOrder="50"
+                parent="Magenest_Movie::xero_integration"
+                action="movie/configuration"
+                resource="Magenest_Movie::all"
+
+        />
+        <add
+                id="Magenest_Movie::xero_bank_account_mapping"
+                title="Xero Bank Account Mapping"
+                module="Magenest_Movie"
+                sortOrder="60"
+                parent="Magenest_Movie::integration"
+                resource="Magenest_Movie::all"
+        />
+        <add
+                id="Magenest_Movie::payment_mapping"
+                title="Payment Mapping"
+                module="Magenest_Movie"
+                sortOrder="65"
+                parent="Magenest_Movie::xero_bank_account_mapping"
+                action="movie/payment_mapping"
+                resource="Magenest_Movie::all"
+
+        />
+        <add
+                id="Magenest_Movie::xero_store_view_tracking_category_mapping"
+                title="Xero Store View Tracking Category Mapping"
+                module="Magenest_Movie"
+                sortOrder="70"
+                parent="Magenest_Movie::integration"
+                resource="Magenest_Movie::all"
+        />
+        <add
+                id="Magenest_Movie::store_view_mapping"
+                title="Store View Mapping"
+                module="Magenest_Movie"
+                sortOrder="75"
+                parent="Magenest_Movie::xero_store_view_tracking_category_mapping"
+                action="movie/store_view_mapping"
+                resource="Magenest_Movie::all"
+
         />
     </menu>
 </config>
