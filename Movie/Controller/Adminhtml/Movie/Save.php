@@ -28,11 +28,9 @@ class Save extends \Magento\Framework\App\Action\Action
         $movieModel->setData($data)->save();
 
         $this->messageManager->addSuccessMessage('Add done !');
-        $resultRedirect = $this->resultFactory->create(ResultFactory::TYPE_REDIRECT);
-        $resultRedirect->setUrl('/movie/movieui');
 
-        $this->_view->loadLayout();
-        $this->_view->renderLayout();
+
+        $this->_redirect('movie/movie');
 
     }
 }

@@ -90,7 +90,7 @@
                     <item name="source" xsi:type="string">movie</item>
                     <item name="dataScope" xsi:type="string">rating</item>
                     <item name="validation" xsi:type="array">
-                        <item name="validate-greater-than-zero" xsi:type="boolean">true</item>
+                        <item name="custom-validation" xsi:type="boolean">true</item>
                     </item>
                 </item>
             </argument>

@@ -1,0 +1,68 @@
+<div class="modal" id="popup-modal" style="display: none">
+    <form action="">
+        <div class="form-group">
+            <label for="email">Email address:</label>
+            <input type="email" class="form-control" id="email">
+        </div>
+        <div class="form-group">
+            <label for="pwd">Password:</label>
+            <input type="password" class="form-control" id="pwd">
+        </div>
+        <div class="checkbox">
+            <label><input type="checkbox"> Remember me</label>
+        </div>
+        <button type="submit" class="action primary">Submit</button>
+    </form>
+</div>
+<button type="button" id="open_modal" class="btn">Open Modal</button>
+<button type="button" id="login_modal" class="btn">Open Magento Login Modal</button>
+<button type="button" class="btn">Open Custom Login Modal</button>
+
+<script>
+    document.getElementById("open_modal").onclick = function(){
+        require([
+            'Magento_Ui/js/modal/alert'
+        ], function(alert) { // Variable that represents the `alert` function
+
+            alert({
+                title: 'Alert',
+                content: 'Hello world!!',
+                actions: {
+                    always: function(){}
+                }
+            });
+
+        });
+    }
+
+    document.getElementById("login_modal").onclick = function(){
+        require(
+            [
+                'jquery',
+                'Magento_Ui/js/modal/modal'
+            ],
+            function(
+                $,
+                modal
+            ) {
+                var options = {
+                    type: 'popup',
+                    responsive: true,
+                    innerScroll: true,
+                    title: 'Login Form',
+                    buttons: [{
+                        text: $.mage.__('Continue'),
+                        class: '',
+                        click: function () {
+                            this.closeModal();
+                        }
+                    }]
+                };
+
+                var popup = modal(options, $('#popup-modal'));
+
+                $('#popup-modal').modal('openModal');
+            }
+        );
+    }
+</script>
