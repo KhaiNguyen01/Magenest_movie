@@ -1,0 +1,120 @@
+<head>
+    <style>
+        .invi {
+            display: none;
+        }
+
+        .form {
+            width: 60%;
+            margin-left: 20%;
+            padding: 20px;
+            border: solid #FFDD94 5px;
+            border-radius: 5px;
+        }
+
+        .form input {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+
+        }
+
+        .form select {
+            width: 60%;
+            margin-left: 20%;
+            border-radius: 3px;
+            padding: 15px;
+            margin-top: 20px;
+            border-style: none;
+            border-bottom: solid gray 1px;
+            background: white;
+            cursor: pointer;
+
+        }
+
+        .form p {
+            margin-top: 20px;
+            font-weight: 600;
+            font-size: 1.2em;
+        }
+
+
+    </style>
+
+
+</head>
+<body>
+<?php
+    $member = $block->getMember();
+?>
+<form class="form">
+    <p class="select" style="cursor: pointer">Select member</p>
+    <div>
+        <select id="select">
+            <option>Select a Member</option>
+            <?php
+            foreach ($member as $item) {
+                echo "<option  value=\"" . $item->getId() . " \">" . $item->getName() . "</option>";
+            }
+            ?>
+        </select>
+    </div>
+    <div class="invi" id="member_info">
+        <div>
+            <p>Name</p>
+            <?php
+            foreach ($member as $item) {
+                echo "<div class=\"data invi\" id=\"name-" . $item->getId() . "\"><input readonly=\"true\" value=\"" . $item->getName() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Address</p>
+            <?php
+            foreach ($member as $item) {
+                echo "<div class=\"data invi\" id=\"address-" . $item->getId() . "\"><input readonly=\"true\" value=\"" . $item->getAddress() . "\" /></div>";
+            }
+            ?>
+        </div>
+        <div>
+            <p>Phone</p>
+
+            <?php
+            foreach ($member as $item) {
+                echo "<div class=\"data invi\" id=\"phone-" . $item->getId() . "\"><input readonly=\"true\" value=\"" . $item->getPhone() . "\" /></div>";
+            }
+            ?>
+        </div>
+    </div>
+
+</form>
+</body>
+<script>
+    require([
+        'jquery'
+    ], function ($) {
+        'use strict';
+        $(document).ready(function () {
+
+            $('body').on('change', '#select', function () {
+                var selectedValue = $(this).val();
+
+                $('#member_info').show();
+                $('#name-' + selectedValue).removeClass("invi");
+                $('#name-' + selectedValue).siblings().addClass("invi");
+                $('#address-' + selectedValue).removeClass("invi");
+                $('#address-' + selectedValue).siblings().addClass("invi");
+                $('#phone-' + selectedValue).removeClass("invi");
+                $('#phone-' + selectedValue).siblings().addClass("invi");
+                $('p').removeClass("invi");
+
+            });
+
+
+        });
+    });
+
+
+</script>

@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Khai_Parttime::member" title="Member" module="Khai_Parttime" sortOrder="51" resource="Khai_Test::all"/>
+        <add id="Khai_Parttime::index" title="List Member" module="Khai_Parttime" sortOrder="10" action="parttime/member" resource="Khai_Test::all" parent="Khai_Parttime::member"/>
+    </menu>
+</config>

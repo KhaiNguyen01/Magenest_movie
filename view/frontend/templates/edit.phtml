@@ -1,0 +1,68 @@
+<head>
+    <style>
+        .text {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .submit {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            background-color: #45a049;
+        }
+
+
+    </style>
+</head>
+
+<?php
+$info = $block -> getMemberInfo();
+$mem = $block->getMember();
+$email = $info->getEmail();
+foreach($mem as $item)
+{
+    $address = $item->getAddress();
+    if($email == $address)
+    {
+        $phone = $item->getPhone();
+        $id = $item->getId();
+        $name = $item->getName();
+    }
+}
+?>
+<body>
+
+<h3>Edit your informations</h3>
+
+<div>
+    <form action="save" method="post">
+        <input type="hidden" class="text" id="id" name="id" placeholder="Your name.." value="<?php echo $id; ?>">
+
+        <label for="name">Name</label>
+        <input type="text" class="text" id="name" name="name" placeholder="Your name.." value="<?php echo $name; ?>">
+
+        <label for="address">Address</label>
+        <input type="text" class="text" id="address" name="address" placeholder="Your address.." value="<?php echo $email; ?>">
+
+        <label for="phone">Phone</label>
+        <input type="number" class="text" id="phone" name="phone" placeholder="Your phone.." value="<?php echo $phone; ?>">
+
+        <input type="submit" class="submit" value="Edit">
+    </form>
+</div>
+
+</body>
