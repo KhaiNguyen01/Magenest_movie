@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Khai_ManufacturerEntity::entity" title="Manufacturer Entity" module="Khai_ManufacturerEntity" sortOrder="51" resource="Khai_ManufacturerEntity::all"/>
+        <add id="Khai_ManufacturerEntity::index" title="List Entity" module="Khai_ManufacturerEntity" sortOrder="10" action="entity/entity" resource="Khai_ManufacturerEntity::all" parent="Khai_ManufacturerEntity::entity"/>
+    </menu>
+</config>

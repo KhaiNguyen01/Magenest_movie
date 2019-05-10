@@ -1,0 +1,24 @@
+<?php
+$entity = $block->getEntity();
+$product = $block->getProduct();
+
+    foreach ($entity as $item) {
+        if ($item->getId() == $product->getManufacturer_id()) {
+            $name = $item->getName();
+            $street = $item->getAddress_street();
+            $city = $item->getAddress_city();
+            $country = $item->getAddress_country();
+            $cname = $item->getContact_name();
+            $cphone = $item->getContact_phone();
+        }
+}
+?>
+<p>Manufacturer: <a
+        onclick="alert('<?php echo 'Name: ' . $name;
+        ?>\n<?php echo 'Street: ' . $street;
+        ?> \n<?php echo 'City: ' . $city;
+        ?> \n<?php echo 'Country: ' . $country;
+        ?> \n<?php echo 'Contact Name: ' . $cname;
+        ?> \n<?php echo 'Contact Phone: ' . $cphone;
+        ?> ')"><?php echo $name; ?></a>
+</p>
