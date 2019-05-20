@@ -1,0 +1,110 @@
+<head>
+    <style>
+        .text {
+            width: 100%;
+            padding: 12px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        .error_mess {
+            color: red;
+        }
+
+        .submit {
+            width: 100%;
+            background-color: #4CAF50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .submit:hover {
+            background-color: #45a049;
+        }
+
+
+    </style>
+</head>
+
+<?php
+$first_name = $last_name = null;
+$info = $block->getCustomerInfo();
+$id = $info->getEntityId();
+$vendor = $block->getVendor();
+?>
+<?php foreach ($vendor as $item): ?>
+    <?php $vendor_id = $item->getCustomerId(); ?>
+
+    <?php if ($vendor_id == $id): ?>
+
+        <body>
+        <h3>Edit your informations</h3>
+
+        <div>
+            <form action="save" method="post" data-mage-init='{"validation":{}}'>
+                <input type="hidden" class="text" id="id" name="id" placeholder="Your name.."
+                       value="<?php echo $item->getId(); ?>">
+
+                <label for="name">First Name</label>
+                <input type="text" class="text" id="first_name" name="first_name" placeholder="Your first name.."
+                       value="<?php echo $item->getFirstName(); ?>" required="true">
+
+                <label for="address">Last Name</label>
+                <input type="text" class="text" id="last_name" name="last_name" placeholder="Your last name.."
+                       value="<?php echo $item->getLastName(); ?>" required="true">
+
+                <label for="email">Email</label>
+                <input type="text" class="text" id="email" name="email" placeholder="Your email.."
+                       value="<?php echo $item->getEmail(); ?>" data-validate='{"required":true, "email":true}'>
+                <span class="error_mess" id="check_email_address_exists"
+                      style="display: none">* Email has already exit</span>
+                <button type="submit" class="submit" value="Edit" id="edit" disabled="disabled">Edit</button>
+            </form>
+        </div>
+
+        </body>
+    <?php endif; ?>
+
+<?php endforeach; ?>
+<?php if ($info->getIsApproved() == 0): ?>
+    <p>Bạn không có quyền truy cập tác vụ này. Xin đăng ký trở thành vendor trước!</p>
+<?php endif; ?>
+
+<script>
+    require([
+        'jquery',
+    ], function ($) {
+        'use strict';
+        $(document).ready(function () {
+
+            $('#email').on('change', function () {
+                var email = $('#email').val();
+                var url = "<?php echo $block->getBaseUrl() . 'khai/customer/result/' ?>";
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {email: email},
+                    success: function (exist) {
+                        if (exist == 0) {
+                            // js for email exists
+                            $('#check_email_address_exists').show();
+                        } else if (exist == 1) {
+                            // js for not
+                            $('#edit').removeAttr("disabled");
+                        }
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        // error handling
+                    }
+                });
+            });
+        });
+    });
+</script>

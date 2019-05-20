@@ -1,0 +1,49 @@
+<?php
+$vendor = $block->getVendor();
+?>
+
+<form class="form" name="form-vendor" method="post" id="form-vendor">
+    <p class="select" style="cursor: pointer">Select vendor</p>
+    <div name="vendor-id" id="vendor-id">
+        <select id="select">
+            <option>Select a Vendor</option>
+            <?php
+            foreach ($vendor as $item) {
+                echo "<option  value=\"" . $item->getId() . " \">" . $item->getFirstName() . "</option>";
+            }
+            ?>
+        </select>
+        <button type="button" class="action primary" id="open-modal" style="margin-top: 20px">Submit</button>
+    </div>
+</form>
+<script>
+    require([
+        'jquery',
+        'Magento_Ui/js/modal/alert'
+    ], function ($,alert) {
+        'use strict';
+        $(document).ready(function () {
+
+            $('#open-modal').on('click', function () {
+                var vendorId = $('#select').val();
+                var url = "<?php echo $block->getBaseUrl().'khai/vendor/result/' ?>";
+                jQuery.ajax({
+                    url: url,
+                    type: "POST",
+                    data: {vendorId:vendorId},
+                    showLoader: true,
+                    cache: false
+                }).done(function (data) {
+                    alert({
+                        title: 'Vendor Info',
+                        content: ['First Name: ',data.firstName,'<br>','Last Name: ',data.lastName,'<br>','Email: ',data.email],
+                        actions: {
+                            always: function(){}
+                        }
+                    });
+                });
+                return false;
+            });
+        });
+    });
+</script>

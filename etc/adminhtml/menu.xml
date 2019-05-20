@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Backend:etc/menu.xsd">
+    <menu>
+        <add id="Magenest_Khai::vendor" title="Magenest Vendor" module="Magenest_Khai" sortOrder="51" resource="Magenest_Khai::all"/>
+        <add id="Magenest_Khai::index" title="List Vendors" module="Magenest_Khai" sortOrder="10" action="khai/vendor" resource="Magenest_Khai::all" parent="Magenest_Khai::vendor"/>
+    </menu>
+</config>
